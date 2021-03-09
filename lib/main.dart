@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './screens/chat_screen.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -10,7 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.blue,
       ),
-      home: Container(),
+      home: ChatScreen(),
     );
   }
 }
