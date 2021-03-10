@@ -19,13 +19,31 @@ class _AuthFormState extends State<AuthForm> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   TextFormField(
+                    validator: (value) {
+                      if (value.isEmpty || !value.contains('@')) {
+                        return 'Please enter a valid email address';
+                      }
+                      return null;
+                    },
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(labelText: 'Email Address'),
                   ),
                   TextFormField(
+                    validator: (value) {
+                      if (value.isEmpty || value.length < 4) {
+                        return 'Username have to be at least 4 chracters long.';
+                      }
+                      return null;
+                    },
                     decoration: InputDecoration(labelText: 'Username'),
                   ),
                   TextFormField(
+                    validator: (value) {
+                      if (value.isEmpty || value.length < 7) {
+                        return 'Password have to be at least 7 characters long.';
+                      }
+                      return null;
+                    },
                     decoration: InputDecoration(labelText: 'Password'),
                     obscureText: true,
                   ),
@@ -36,7 +54,7 @@ class _AuthFormState extends State<AuthForm> {
                   ),
                   TextButton(
                     onPressed: () {},
-                    child: Text('Create an account'),
+                    child: Text('Create new account'),
                   ),
                 ],
               ),
