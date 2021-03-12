@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Chat App',
       theme: ThemeData(
         primaryColor: Colors.blue,
+        accentColor: Colors.green,
       ),
       home: StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
