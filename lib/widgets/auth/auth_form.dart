@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:firebase_chat_app/widgets/auth/image_input.dart';
@@ -26,10 +28,25 @@ class _AuthFormState extends State<AuthForm> {
   var _email = '';
   var _username = '';
   var _password = '';
+  File _image;
+
+  void _retriveImage(File image) {
+    _image = image;
+  }
 
   void _trySubmit() {
     final isValid = _formKey.currentState.validate();
     FocusScope.of(context).unfocus();
+
+    if (_image == null && !_isLogin) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Please pick an image.'),
+          backgroundColor: Theme.of(context).errorColor,
+        ),
+      );
+      return;
+    }
 
     if (isValid) {
       _formKey.currentState.save();
@@ -55,7 +72,7 @@ class _AuthFormState extends State<AuthForm> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  if (!_isLogin) ImageInput(),
+                  if (!_isLogin) ImageInput(_retriveImage),
                   TextFormField(
                     key: ValueKey('email'),
                     validator: (value) {
