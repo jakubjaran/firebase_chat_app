@@ -2,6 +2,7 @@
     package="com.example.firebase_chat_app">
    <application
         android:label="firebase_chat_app"
+        android:requestLegacyExternalStorage="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

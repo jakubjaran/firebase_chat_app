@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:firebase_chat_app/widgets/auth/image_input.dart';
+
 class AuthForm extends StatefulWidget {
   final void Function(
     String email,
@@ -53,6 +55,7 @@ class _AuthFormState extends State<AuthForm> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  if (!_isLogin) ImageInput(),
                   TextFormField(
                     key: ValueKey('email'),
                     validator: (value) {
