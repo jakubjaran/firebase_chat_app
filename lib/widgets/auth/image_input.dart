@@ -17,7 +17,11 @@ class _ImageInputState extends State<ImageInput> {
 
   void _pickImage() async {
     final picker = ImagePicker();
-    final image = await picker.getImage(source: ImageSource.camera);
+    final image = await picker.getImage(
+      source: ImageSource.camera,
+      maxWidth: 150,
+      imageQuality: 50,
+    );
     if (image == null) {
       return;
     }
