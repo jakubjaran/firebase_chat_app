@@ -44,6 +44,7 @@ class ChatScreen extends StatelessWidget {
         ],
       ),
       body: Container(
+        padding: EdgeInsets.only(top: 10),
         child: Column(
           children: [
             Expanded(
